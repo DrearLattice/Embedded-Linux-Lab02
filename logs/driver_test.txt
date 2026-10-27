@@ -1,0 +1,30 @@
+===== LAB-02 CHARACTER DRIVER TEST =====
+
+Test 1:
+echo "Hello from userspace, LAB-02!" > /dev/lab2
+cat /dev/lab2
+
+Result:
+Hello from userspace, LAB-02!
+
+Kernel log:
+lab2: device opened (count=5)
+lab2: wrote 30 bytes
+lab2: device released
+lab2: device opened (count=6)
+lab2: read 30 bytes
+lab2: device released
+
+Test 2:
+echo "Embedded Linux Lab2 Test Data" > /dev/lab2
+cat /dev/lab2
+
+Result:
+Embedded Linux Lab2 Test Data
+
+Kernel log:
+lab2: device opened (count=7)
+lab2: wrote 30 bytes
+lab2: device released
+
+Result: PASS

@@ -1,0 +1,23 @@
+# Kernel build temporary files
+*.o
+*.mod
+*.mod.c
+*.cmd
+*.symvers
+modules.order
+.tmp_versions/
+.cache.mk
+
+# Editor and backup files
+*~
+*.swp
+*.swo
+*.bak
+
+# Temporary files
+*.tmp
+*.log
+
+# Keep lab evidence logs
+!logs/
+!logs/*.txt

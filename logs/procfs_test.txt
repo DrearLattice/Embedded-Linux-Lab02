@@ -1,0 +1,26 @@
+===== LAB-02 PROCFS + SYSFS TEST =====
+
+PROCFS:
+cat /proc/lab2_info
+
+LAB-02 Driver Statistics
+======================
+Driver name : lab2
+Major number : 240
+Buffer size : 1024 bytes
+Data length : 30 bytes
+Open count : 7
+Last data : [Embedded Linux Lab2 Test Data]
+
+SYSFS:
+
+/sys/class/lab2_class/lab2/buffer_len
+30
+
+/sys/class/lab2_class/lab2/open_count
+7
+
+/sys/class/lab2_class/lab2/last_data
+Embedded Linux Lab2 Test Data
+
+Result: PASS

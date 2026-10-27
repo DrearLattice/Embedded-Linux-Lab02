@@ -1,0 +1,69 @@
+===== LAB-02 MTD + NANDSIM + JFFS2 TEST =====
+
+NAND simulator:
+mtd1: 08000000 00004000 "NAND simulator partition 0"
+
+MTD information:
+Name: NAND simulator partition 0
+Type: nand
+Eraseblock size: 16384 bytes (16 KiB)
+Amount of eraseblocks: 8192
+Device size: 128 MiB
+Minimum input/output unit size: 512 bytes
+OOB size: 16 bytes
+Device is writable: true
+
+Erase:
+sudo flash_erase /dev/mtd1 0 0
+Result: successful
+
+JFFS2 test data:
+hello.txt
+info.txt
+logs/boot.log
+
+JFFS2 image:
+sudo mkfs.jffs2 \
+  --root=/tmp/jffs2_data \
+  --eraseblock=0x4000 \
+  --output=/tmp/rootfs.jffs2 \
+  --pad \
+  --no-cleanmarkers
+
+Result:
+JFFS2 image created successfully.
+
+Write image:
+sudo nandwrite -p /dev/mtd1 /tmp/rootfs.jffs2
+
+Result:
+Image written successfully.
+
+Mount:
+sudo mount -t jffs2 /dev/mtdblock1 /mnt/jffs2
+
+Read test:
+hello.txt:
+Hello from JFFS2 - LAB-02
+
+info.txt:
+Embedded Linux LAB-02
+
+logs/boot.log:
+System boot log - LAB-02
+
+JFFS2 dump:
+jffs2dump confirmed:
+hello.txt
+info.txt
+logs/boot.log
+
+NAND dump:
+nanddump completed successfully.
+ECC failed: 0
+Corrected: 0
+Bad blocks: 0
+
+Hexdump confirmed JFFS2 nodes and test data.
+
+Result: PASS
